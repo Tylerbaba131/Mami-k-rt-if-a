@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotoğraf Efekti</title>
+  <style>
+    /* Dönen resim için stil */
+    .dönen-resim {
+      width: 400px; /* Resmin genişliğini burada ayarlıyoruz */
+      height: auto;
+      animation: dönme 5s linear infinite;
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* Dönme animasyonu */
+    @keyframes dönme {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Metin kutusu için stil */
+    .metin-kutusu {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+      opacity: 0;
+      animation: metinGoster 2s ease forwards;
+      animation-delay: 5s; /* Döndürme bittikten sonra metin görünecek */
+    }
+
+    /* Metnin ekranda görünmesini sağlayan animasyon */
+    @keyframes metinGoster {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Düğme stili */
+    .play-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dönen resim -->
+  <img src="image.png" alt="Dönen Resim" class="dönen-resim">
+
+  <!-- Metin kutusu -->
+  <div class="metin-kutusu">Mami Kürt Babası</div>
+
+  <!-- Şarkıyı başlatmak için düğme -->
+  <button class="play-button" onclick="sarkiOynat()">Şarkıyı Başlat</button>
+
+  <!-- Şarkı Oynatıcı (Başlangıçta sessiz) -->
+  <audio id="sarki" loop>
+    <source src="sarki.mp3" type="audio/mpeg">
+    Tarayıcınız ses öğesini desteklemiyor.
+  </audio>
+
+  <script>
+    function sarkiOynat() {
+      var sarki = document.getElementById("sarki");
+      sarki.play();
+    }
+  </script>
+
+</body>
+</html>
